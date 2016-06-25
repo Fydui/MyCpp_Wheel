@@ -12,7 +12,6 @@ struct Car
     int years;
     int yr_tdy;
     int carmnky;
-    //double oil;
 
     ~Car()
     {
@@ -22,9 +21,21 @@ struct Car
 
 void Double_Car(int carmnky, int years, int yr_tdy)
 {
-    double carmnky_ = carmnky;
+    double carmnky_ = carmnky;  
     int year = yr_tdy - years;
     double interest;
+
+
+    //double (*data)[year] = new double[year][12];
+
+    //初始化二维数组
+    double** data;  //指向二维数组的指针的指针
+    data = new double*[year];   //初始化行
+    for(int j =0;j<year;j++)
+    {
+       data[j] = new double[12];   //初始化列
+    }
+
 
     for(int i = 0; i < year; i++)
     {
@@ -33,17 +44,28 @@ void Double_Car(int carmnky, int years, int yr_tdy)
 
         for(int k = 0; k <12; k++)
         {
-            interest= carmnky_ - (carmnky_*0.001*k);
-            cout <<"How much has the car been " << "in " << k+1 << " month: " << interest << endl;
-            carmnky_ = interest;
+            carmnky_= carmnky_ - (carmnky_*0.001*k);
+            cout <<"How much has the car been " << "in " << k+1 << " month: " << carmnky_ << endl;
+            //carmnky_ = interest;
+            data[i][k]= carmnky_;
         }
-
-    //int mon_ = new int[i][k];
 
     }
 
+    double O_T = 0;
+    for(int a =0;a < year;a++)
+    {
 
-    //return money;
+        for(int b = 0; b < 12;b++)
+        {
+            O_T = O_T + data[a][b];
+        }
+
+          cout << a+1 <<"YEAR You are going to loss: "<< carmnky*12 - O_T << endl;
+          O_T = 0;
+
+    }
+
 }
 
 int main()
