@@ -29,14 +29,13 @@ int main()
         int id = query.value(0).toInt();
         QString ask = query.value(1).toString();
         QString answer = query.value(2).toString();
-        //qDebug()<<id<<ask<<answer;
-        //string sask = ask.toStdString();
-        //string sanswer = answer.toStdString();
+
         cout << " ID: " <<id << endl;
         cout << " ASK: "<<ask << endl;
         cout <<" ANSWER: " << answer << endl;
 
     }
+    //使用like进行字符串查询
     query.exec(QObject::tr("SELECT * FROM LAI WHERE ASK LIKE '你好%';"));
     while(query.next())
     {
@@ -44,7 +43,52 @@ int main()
         cout <<"LIKE: " <<tes;
     }
 
+    //添加表
+    /*
+    query.exec("INSERT INTO LAI(ID,ASK,ANSWER)VALUES(?,?,?)");
 
+    QVariantList id;
+    id << 4;
+    query.addBindValue(id);
+
+    QVariantList ask;
+    ask << "远看炮塔吓死人";
+    query.addBindValue(ask);
+
+    QVariantList answer;
+    answer << "近看五队负重轮";
+    query.addBindValue(answer);
+    query.finish();*/
+    query.exec(QObject::tr("INSERT INTO LAI VALUES(4,'远看炮塔吓死人','近看五队负重轮')"));
+    query.exec(QObject::tr("SELECT * FROM LAI ORDER BY ID ASC"));
+    while(query.next())
+    {
+        int id = query.value(0).toInt();
+        QString ask = query.value(1).toString();
+        QString answer = query.value(2).toString();
+
+        cout << " ID: " <<id << endl;
+        cout << " ASK: "<<ask << endl;
+        cout <<" ANSWER: " << answer << endl;
+
+    }
+
+
+    //删除数据
+    //query.prepare("delete from LAI where id = 2");
+    query.exec("delete from LAI where id = 2");
+    query.exec(QObject::tr("SELECT * FROM LAI ORDER BY ID ASC"));
+    while(query.next())
+    {
+        int id = query.value(0).toInt();
+        QString ask = query.value(1).toString();
+        QString answer = query.value(2).toString();
+
+        cout << " ID: " <<id << endl;
+        cout << " ASK: "<<ask << endl;
+        cout <<" ANSWER: " << answer << endl;
+
+    }
     db.close();
 
     return 0;
