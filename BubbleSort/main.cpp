@@ -1,5 +1,7 @@
 #include <iostream>
 #include <QString>
+#include <windows.h>
+#include <time.h>
 using namespace std;
 
 struct figure{      //定义结构
@@ -41,9 +43,35 @@ void Name()//1.1版本 连人名带分数排序一起输出
         cout << array[b].name << " 的分数为: "<< array[b].score << " " << endl;
 }
 
+void test() //计算时间 10w个数 大约56s
+{
+    cout << "开始!" << endl;
+    time_t start = 0,end = 0;
+    time(&start);
+    int s = 100000;
+    int bt = 0;
+    int array[s];
+        for(int i = 0; i<s; i++){
+            srand((unsigned)time(NULL));
+            int md = (rand() % 1000);//产生随机整数
+            array[i] = md;
+        }
+    for(int i = 0; i<s-1; i++)
+        for(int a = 0; a <s-1; a++)
+            if(array[a] < array[a+1]){
+                bt = array[a];
+                array[a] = array[a+1];
+                array[a+1] = bt;
+            }
+    time(&end);
+        cout << "算法运行了：" << (end-start) << "秒" << endl;
+
+}
+
 int main()
 {
-    /*
+    //test();
+
     int bt = 0;                     //交换变量的小三
     int sum = 0;
     cout << "请问一共有多少个数? ";
@@ -69,7 +97,7 @@ int main()
     //从小到大循环输出数组
     for(int b = 0; b < sum; b++)
         cout << " " << array[b] ;
-        */
-    Name();
+
+    //Name();
 
 }
