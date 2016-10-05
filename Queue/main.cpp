@@ -1,21 +1,30 @@
 #include <iostream>
 using namespace std;
 
+struct queue
+{
+    int head;
+    int tail;
+    int data[100];
+};
+
 int main()
 {
-    int sum,number,array[100];
+    queue my;
+    int sum,number;
     cout << "请输入位数: ";
     cin >> sum;
-    int head = 0,tail = sum;
+    my.head = 0;
+    my.tail = sum;
     for(int i = 0; i<sum; i++){ //循环输入加密号码
         cin >> number;
-        array[i] = number;
+        my.data[i] = number;
     }
-    while(head < tail) {
-        cout << array[head];      //输出第一个
-        head++;                   //下标往后挪 挪到第二个 相当于删除了刚才输出的
-        array[tail] = array[head];//把第二个挪到末尾
-        tail++;                   //尾部往后挪 下一个数就放在这
-        head++;                   //head下标继续挪 挪到第三个 第三个就是下次循环的第一个
+    while(my.head < my.tail) {
+        cout << my.data[my.head];           //输出第一位
+        my.head++;                          //下标往后挪 挪到第二位 相当于删除了刚才输出的
+        my.data[my.tail] = my.data[my.head];//把第二位挪到末尾
+        my.tail++;                          //尾部往后挪 下一位数就放在这
+        my.head++;                          //head下标继续挪 挪到第三位 第三位就是下次循环的第一位
     }
 }
