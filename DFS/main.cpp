@@ -23,13 +23,39 @@ void dfs(int box[],int book[],int step,int n)
      return;
 }
 
+void dfs2(bool book[] ,int step, int a[])
+{
+    if(step == 10){
+        if(a[1]*100+a[2]*10+a[3] + a[4]*100+a[5]*10+a[6] == a[7]*100+a[8]*10+a[9]){
+            cout << a[1] << a[2] << a[3]
+                    << "+" << a[4] << a[5] << a[6]
+                                        << " = " << a[7] << a[8] << a[9] << endl;
+                    jishu++;
+        }
+            return;
+    }
+    for(int i = 1; i <=9; i++){
+        if(book[i] == false){
+            a[step] = i;
+            book[i] = true;
+            dfs2(book,step+1,a);
+            book[i] = false;
+        }
+    }
+    return;
+}
+
+
 int main()
 {
-    int book[1000],num[1000];
-    for(int a = 0; a<1001; a++) book[a] = 0;
-    for(int b = 0; b<1001; b++) num[b] = 0;
+    bool book[1000];
+    int num[1000],arr[10];
+    for(int c = 1; c<=9; c++) arr[c] = 0;
+    for(int a = 0; a<1001; a++) book[a] = false;
+    for(int b = 0; b<1000; b++) num[b] = 0;
     int n = 0;
-    cin >> n;
-    dfs(num,book,1,n);
+    //cin >> n;
+    dfs2(book,1,arr);
+    cout <<"+:"<<jishu<<"\nDONE";
     return 0;
 }
