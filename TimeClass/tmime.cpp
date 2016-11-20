@@ -1,5 +1,26 @@
 #include "tmime.h"
+#include <iostream>
+using namespace std;
+/*
+struct job{
+    int a = 0;
+    double b = 0;
+};
+//template<> void swap<job>(job &a, job &b);
 
+template<typename T,T> void Swap(T &a1,T &a2){
+    T temp = a1;
+    a1 = a2;
+    a2 = temp;
+
+}
+template<> void SWAP<job>(job &a, job &b){
+    int temp = a.a;
+    a.a = b.a;
+    b.a = temp;
+
+}
+*/
 TIME::TIME(){}
 TIME::TIME(int hour, int min){
     this->hour = hour;
@@ -51,5 +72,8 @@ TIME TIME::operator *(double t){
     return temp;
 }
 
-
+ostream & operator << ( ostream &os,TIME &time){
+    os << time.hour<<":" << time.min;
+    return os;
+}
 

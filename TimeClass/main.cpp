@@ -27,5 +27,6 @@ int main(){
     mytime.show(); //3:0
 
     mysqr(2);
+    cout <<"\n" <<mytime << endl << temp1;
     return 0;
 }
