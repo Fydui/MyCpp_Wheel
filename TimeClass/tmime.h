@@ -21,6 +21,10 @@ public:
     TIME operator+(const TIME& t);
     TIME operator-(const TIME& t);
 
+    //转换函数
+    operator int();
+    operator double();
+
     //
     void show();
 

@@ -26,7 +26,13 @@ int main(){
     mytime = 2 * temp1;
     mytime.show(); //3:0
 
-    mysqr(2);
-    cout <<"\n" <<mytime << endl << temp1;
+    mysqr(2);//内联函数の递归
+    cout <<"\n" <<mytime << endl << temp1 << endl;
+
+    double k = (double)temp1;
+    cout << k << endl;
+
+    int j = (int)mytime;
+    cout << j << endl;
     return 0;
 }

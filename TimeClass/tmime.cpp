@@ -77,3 +77,10 @@ ostream & operator << ( ostream &os,TIME &time){
     return os;
 }
 
+TIME::operator int(){
+    return hour+min;
+}
+
+TIME::operator double(){
+    return hour+min;
+}
