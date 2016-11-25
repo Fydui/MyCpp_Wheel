@@ -28,6 +28,21 @@ StringBad::StringBad(char* s)
     cout << "第 "<<num_strings<<" 个对象:"<< str <<endl;
 }
 
+StringBad::StringBad(const StringBad &st){
+    num_strings++;
+    int len = st.len;
+    str = new char[len+1];
+    strcpy(str,st.str);
+    cout <<"复制构造函数被调用.值:" << str <<endl;
+}
+StringBad::operator =(const StringBad &st){
+    if(this == &st) return *this;
+    delete str;
+    len = st.len;
+    str = new char[len+1];
+    strcpy(str,st.str);
+    return *this;
+}
 ostream & operator<<(ostream &os, StringBad &st)
 {
     os << st.str;
