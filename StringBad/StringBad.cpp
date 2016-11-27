@@ -81,9 +81,9 @@ istream & operator>>(istream &is, StringBad &st){
     is >> st.str;
     return is;
 }
-char StringBad::operator [](int i){
+char & StringBad::operator [](int i){
     return str[i];
 }
-const char StringBad::operator [](int i) const{
+const char & StringBad::operator [](int i) const{
     return str[i];
 }
