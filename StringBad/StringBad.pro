@@ -10,7 +10,9 @@ CONFIG -= app_bundle
 TEMPLATE = app
 
 SOURCES += main.cpp \
-    StringBad.cpp
+    StringBad.cpp \
+    stringptr.cpp
 
 HEADERS += \
-    StringBad.h
+    StringBad.h \
+    stringptr.h
