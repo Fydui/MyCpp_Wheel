@@ -1,9 +1,11 @@
 #include"StringBad.h"
+#include "stringptr.h"
 using namespace std;
 int main(){
-    StringBad ice("ice");
-    StringBad t;
-    cin >> t;
-    cout << t;
+    StringPtr ice("ice");
+    StringPtr t("jelly");
+    StringPtr a;
+    a = ice + t;
+    cout << a;
     return 0;
 }

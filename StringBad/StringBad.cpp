@@ -87,3 +87,4 @@ char & StringBad::operator [](int i){
 const char & StringBad::operator [](int i) const{
     return str[i];
 }
+
