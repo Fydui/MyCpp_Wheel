@@ -31,7 +31,7 @@ int main(){
 
     for(int cycle = 0; cycle<cy; cycle++)
         {
-            if(newcustomer(min_cuts))
+            if(newcustomer(min_cust))
             {
                 if(line.isfull()) turnaways++;
                 else
@@ -58,9 +58,9 @@ int main(){
         cout << "保存的客户: "<< served << endl;
         cout << "避开的: " << turnaways <<endl;
         cout << "队列平均长度: ";
-        ios_base::precision(2);
-        ios_base::setf(ios_base::fixed, ios_base::floatfield);
-        cout << (double) sum_line/cy << end;
+        cout.ios_base::precision(2);
+        cout.ios_base::setf(ios_base::fixed, ios_base::floatfield);
+        cout << (double) sum_line/cy << endl;
         cout << "平均等待时间: "
              << (double) line_wait / served << "分钟" << endl;
     }
