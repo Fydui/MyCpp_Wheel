@@ -1,16 +1,15 @@
 ﻿#ifndef BRASS_H
 #define BRASS_H
 #include <iostream>
-
 class brass
 {
 public:
-    brass(const std::string & na,long i = -1,double Nb = 0.0);
-    virtual ~brass(){}
+    brass(const std::string & na= "NULL",long i = -1,double Nb = 0.0);
+    virtual ~brass();
     double ShowBalance() const;
     void SetDeposit(double de);
     virtual void ViewAcct() const;
-    virtual void withdraw(double de);
+    virtual void Withdraw(double de);
 
 private:
     std::string Name;
@@ -21,19 +20,19 @@ private:
 class brassplus : public brass
 {
 public:
-    brassplus(double Ml= 500, double re = 0.11125, double ob = 0.0,
-              const std::string & na,long id = -1, double Nb = 0.0);
-    brassplus(const brass & br,double Ml = 500,double re = 0.11125,double ob = 0.0);
+    brassplus(const std::string & na = "NULL",long i = -1,double Nb = 0.0,
+              double ml = 500, double r = 0.11125);
+    brassplus(const brass & br,double Ml = 500,double re = 0.11125);
     virtual void ViewAcct() const;
-    virtual void withdraw(double de);
+    virtual void Withdraw(double de);
     void ResetMax(double m){MaxLoan = m;}
-    void ResetRate(double r){rate = r;}
-    void ResetOwes(double o){owesBank = 0.0;}
+    void ResetRate(double r){Rate = r;}
+    void ResetOwes(double o){OwesBank = o;}
 
 private:
     double MaxLoan; //贷款上限
-    double rate;    //利率
-    double owesBank; //欠款
-}
+    double Rate;    //利率
+    double OwesBank; //欠款
+};
 
 #endif // BRASS_H
