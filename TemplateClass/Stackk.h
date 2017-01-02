@@ -51,7 +51,7 @@ bool Stack<Type>::pop(Type & it)
     if(top > 0)
     {
         it = item[--top];
-        return 0;
+        return true;
     }
     else
         return false;
