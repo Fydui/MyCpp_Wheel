@@ -36,6 +36,7 @@ public:
     Remote(int m = Tv::tv):mode(m){}
     bool volup(Tv & t){return t.volup();}
     bool voldown(Tv &t){return t.voldown();}
+    void onoff(Tv & t){t.onoff();}
     void chanup(Tv &t){return t.chanup();}
     void chandown(Tv &t){return t.chandown();}
     void set_mode(Tv &t){return t.set_mode();}
