@@ -54,8 +54,10 @@ int main()
     {
         pg = GetOne();
         pg->Speak();
-        if(ps = dynamic_cast<Superb *>(pg))
+        if(ps = dynamic_cast<Superb *>(pg)) //检测pg是否可以安全的将其转化为Superb类型
             ps->Say();
+        if(typeid(Magn) == typeid(*pg))
+            cout << "Magn == *pg" << endl; //检测*pg的类型和Magn是否相同
     }
     return 0;
 }
