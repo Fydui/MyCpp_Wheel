@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <cmath>
 #include <string>
 #include "exc_mean.h"
@@ -10,14 +10,14 @@ private:
 public:
     demo(const string & str){
         word = str;
-        cout << "demo: " << word << " ´´½¨" << endl;
+        cout << "demo: " << word << " åˆ›å»º" << endl;
     }
     ~demo(){
-        cout << "demo: " << word << " Ïú»Ù" << endl;
+        cout << "demo: " << word << " é”€æ¯" << endl;
     }
     void show() const
     {
-        cout << "demo: " << word << " Show³ö" << endl;
+        cout << "demo: " << word << " Showå‡º" << endl;
     }
 };
 
@@ -26,50 +26,54 @@ double gmean(double a, double b);
 double means(double a, double b);
 
 int main(){
+    fun();
     double x,y,z;
-    demo d1("µ±Ç°´¦ÓÚ: main()");
-    cout << "ÇëÊäÈëÁ©Êý: ";
+    demo d1("å½“å‰å¤„äºŽ: main()");
+    cout << "è¯·è¾“å…¥ä¿©æ•°: ";
     while(cin >> x >> y)
     {
         try {
             z = means(x,y);
-            cout << "" << x << " ºÍ " << y
-                 << " µÄÆ½¾ùÖµÊÇ " << z << endl;
-            cout << "ÊäÈëÏÂÒ»¶Ô: " << endl;
+            cout << "" << x << " å’Œ " << y
+                 << " çš„å¹³å‡å€¼æ˜¯ " << z << endl;
+            cout << "è¾“å…¥ä¸‹ä¸€å¯¹: " << endl;
         }
         catch(bad_hmean & bg){
             bg.mesg();
-            cout << "²»Òª¸ã¸ö´óÐÂÎÅ,ÔÙÊÔÒ»´Î;" << endl;
+            cout << "ä¸è¦æžä¸ªå¤§æ–°é—»,å†è¯•ä¸€æ¬¡;" << endl;
             continue;
         }
         catch(bad_gmean & hg){
             hg.mesg();
             cout << "values used: " << hg.v1 << ", "
                  << hg.v2 << endl;
-            cout << "ÄãÊäÈëµÄÕâÁ©ÊýÓÐ²¡" << endl;
+            cout << "ä½ è¾“å…¥çš„è¿™ä¿©æ•°æœ‰ç—…" << endl;
             break;
         }
         d1.show();
     }
-    cout << "×îºó×£Äú,ÌáÇ¬Éæ¾­" << endl;
+    cout << "æœ€åŽç¥æ‚¨,æä¹¾æ¶‰ç»" << endl;
     return 0;
 }
 double hmean(double a, double b)
 {
     if (a == -b)
         throw bad_hmean(a,b);
+    //å½“è¯¥å¼‚å¸¸è¢«è§¦å‘çš„æ—¶å€™ æ²¿ç€è°ƒç”¨é“¾å‘ä¸Šå¯»æ‰¾catch(bad_hmean & bg)
     return 2.0 * a * b /(a+b);
 }
 double gmean(double a, double b)
 {
     if(a < 0 || b < 0)
         throw bad_gmean(a,b);
+    //å½“è¯¥å¼‚å¸¸è¢«è§¦å‘çš„æ—¶å€™ æŽ§åˆ¶æƒå°†ä¼ é€’ç»™main åœ¨mainä¸­å¯»æ‰¾catch(bad_gmean & hg)
     return sqrt(a * b);
 }
+
 double means(double a, double b)
 {
     double am, hm ,gm;
-    demo d2("µ±Ç°´¦ÓÚ: means()");
+    demo d2("å½“å‰å¤„äºŽ: means()");
     am = (a + b) /2.0;
     try{
         hm = hmean(a,b);
@@ -78,8 +82,8 @@ double means(double a, double b)
     catch(bad_hmean & bg)
     {
         bg.mesg();
-        cout << "¿¨ÔÚ: means() " << endl;
-        throw;
+        cout << "å¡åœ¨: means() " << endl;
+        throw; //å½“è¯¥throwå¼‚å¸¸è¢«è§¦å‘çš„æ—¶å€™ æŽ§åˆ¶æƒè¿”å›žç»™main (åœ¨mainä¸­å¯»æ‰¾ç€åˆé€‚çš„catch
     }
     d2.show();
     return (am + gm + hm)/3.0;

@@ -8,9 +8,9 @@ private:
 
 public:
     HasFriend(const T & i) : item(i){ct++;}
-    ~HasFriend() {ct++;}
+    ~HasFriend() {ct--;}
     friend void conuts();
-    friend void reports(HasFriend<T> & hf);
+    friend void report(HasFriend<T> & hf);
     static int ct;
 };
 template <typename T>
@@ -21,12 +21,12 @@ void counts()
     cout << "double count:" << HasFriend<double>::ct <<endl;
 }
 
-void reports(HasFriend<int> & hf)
+void report(HasFriend<int> & hf)
 {
     cout << "HasFriend<int>" << hf.item << endl;
 }
 
-void reports(HasFriend<double> & hf)
+void report(HasFriend<double> & hf)
 {
     cout << "HasFriend<double>" << hf.item << endl;
 }
@@ -40,8 +40,8 @@ int main()
     counts();
     HasFriend<double> hfdb(10.5);
     counts();
-    reports(hfil);
-    reports(hfi2);
-    reports(hfdb);
+    report(hfil);
+    report(hfi2);
+    report(hfdb);
     return 0;
 }

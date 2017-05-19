@@ -27,6 +27,7 @@ int main()
         cout.width(3);
         cout << sum[i] << ", average = " << aves[i] << endl;
     }
+
     cout << "DONE" << endl;
 }
 

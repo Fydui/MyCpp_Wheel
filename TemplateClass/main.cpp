@@ -2,6 +2,8 @@
 #include <string>
 #include "Stackk.h"
 #include "stackk_g.h"
+#include <ctime>
+#include <cstdlib>
 using namespace std;
 int main()
 {   /*
@@ -43,21 +45,29 @@ int main()
     }
     return 0;
     */
-    int ss;
-    cin >> ss;
-    Stack_p<const char *> aa(ss);
-    const char * list[3] = {"aaa","bbb","ccc"};
-    const char * tlist[3];
-    int p= 0,n = 0;
-    while (p < 3){
-        if(aa.isempty())
-            aa.push(list[n++]);
-        else if (aa.isfull())
-            aa.pop(tlist[p++]);
+    //stackk_g
+    srand(time(0));
+    cout << "Enter Stack Size:";
+    int sta;
+    cin >> sta;
+    Stack_p<const char *> st(sta);
+    const char * in[3] = {"ONE","TWO","THREE"};
+    const char * out[3];
+    int p = 0;
+    int n = 0;
+    while(p < 3)
+    {
+        if(st.isempty())
+            st.push(in[n++]);
+        else if(st.isfull())
+            st.pop(out[p++]);
+        else if(rand() % 2 && n < 3)
+            st.push(in[n++]);
         else
-            aa.pop(tlist[p++]);
+            st.pop(out[p++]);
     }
-    for(int i = 0; i<3; i++)
-        cout << tlist[i] << endl;
+    for (int i = 0; i < 3; i++)
+        cout << out[i] << endl;
+
     return 0;
 }

@@ -5,7 +5,6 @@
 using namespace std;
 
 int main(){
-    vector<double> std;
     vector <double> data;
     double temp;
 
