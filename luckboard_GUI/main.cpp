@@ -1,19 +1,9 @@
-﻿#include <QGuiApplication>
-#include <QQmlApplicationEngine>
+﻿#include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include <iostream>
 #include <fstream>
-#include <assert.h>
-#include <QFile>
-#include <QTextStream>
-#include <QTextCodec>
-#include <QByteArray>
-#include<QStringList>
-#include <QString>
-#include <sstream>
-#include <time.h>  
-#include <QFileInfo>
-#include <QQuickWindow>
+#include <QtCore>
+#include <QtGui>
+#include <time.h>
 #include "mod.h"
 
 using namespace std;
@@ -43,7 +33,7 @@ int main(int argc, char *argv[])
     ifstream inflie;
     string file = pa.toStdString();
     inflie.open(file.data());
-    assert(inflie.is_open());
+    //assert(inflie.is_open());
     string in;
     while(getline(inflie, in)){
         auto found = in.find("=");
